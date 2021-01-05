@@ -23,7 +23,7 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-
+import RNFS from "react-native-fs";
 const App: () => React$Node = () => {
   return (
     <>
@@ -43,7 +43,7 @@ const App: () => React$Node = () => {
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
                 Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
+                screen and then come back to see your edits--- the files: {RNFS.ExternalStorageDirectoryPath}
               </Text>
             </View>
             <View style={styles.sectionContainer}>
