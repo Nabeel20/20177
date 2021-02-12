@@ -126,7 +126,7 @@ const MyComponent = () => {
             time: '05:02'
         }]
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <FlatList
                 data={nabeel}
                 renderItem={({ item }) =>
