@@ -2,15 +2,6 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { Provider as PaperProvider, Surface, TouchableRipple } from 'react-native-paper';
 import { View, StyleSheet, Text, FlatList, I18nManager } from 'react-native';
-import {
-  useFonts,
-  Cairo_200ExtraLight,
-  Cairo_300Light,
-  Cairo_400Regular,
-  Cairo_600SemiBold,
-  Cairo_700Bold,
-  Cairo_900Black
-} from '@expo-google-fonts/cairo'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -18,8 +9,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 I18nManager.forceRTL(true);
 
 const theme = {
-  // Specify custom property
-  // Specify custom property in nested object
   colors: {
     primary: 'white'
   }
@@ -27,15 +16,7 @@ const theme = {
 
 
 const MyComponent = () => {
-  let [fontsLoaded] = useFonts({
-    Cairo_900Black,
-  });
   const Stack = createStackNavigator();
-
-  if (!fontsLoaded) {
-    return <Text>font still loading</Text>;
-  }
-
   function DetailsScreen() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -44,17 +25,6 @@ const MyComponent = () => {
     );
   }
   function Home(){
-     let [fontsLoaded] = useFonts({
-        Cairo_300Light,
-        Cairo_400Regular,
-        Cairo_600SemiBold,
-        Cairo_700Bold,
-        Cairo_900Black,
-    });
-
-    if (!fontsLoaded) {
-        return <Text>font still loading</Text>;
-    }
     const nabeel = [
         {
             title: 'ضخامة الكبد والطحال',
@@ -167,7 +137,7 @@ const MyComponent = () => {
     <PaperProvider theme={theme}>
       <NavigationContainer>
 
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Details" component={DetailsScreen} options={{ title: 'Overview' }} />
         </Stack.Navigator>
