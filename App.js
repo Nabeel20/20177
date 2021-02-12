@@ -5,6 +5,7 @@ import { View, StyleSheet, Text, FlatList, I18nManager } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Octicons } from '@expo/vector-icons'
 //Force RTL
 I18nManager.forceRTL(true);
 
