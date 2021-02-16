@@ -25,7 +25,7 @@ const MyComponent = () => {
       </View>
     );
   }
-  function Home(){
+  function Home({navigation}){
     const nabeel = [
         {
             title: 'ضخامة الكبد والطحال',
