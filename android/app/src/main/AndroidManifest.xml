@@ -16,10 +16,11 @@
             <action android:name="android.intent.action.VIEW" />
             <category android:name="android.intent.category.DEFAULT" />
             <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="file" />
-            <data android:mimeType="*/*" />
-            <data android:pathPattern=".*\\.quiz" />
-            <data android:host="*" />
+            <data
+              android:mimeType="*/*"
+              android:host="*"
+              android:pathPattern=".*\\.quiz"
+             />
          </intent-filter>
         
         
