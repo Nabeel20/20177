@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "react-native-file-access":"1.0.3",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-fs": "2.16.6",
