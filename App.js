@@ -1,27 +1,31 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { View, StyleSheet, Text, FlatList, I18nManager } from 'react-native';
-import { Dirs, FileSystem } from 'react-native-file-access';
+import RNFS from 'react-native-fs'
 function MyComponent(){
   const [isloading, setIsLoading] = React.useState(true)
   const [errorMessage, setErrorMessage] = React.useState('error message: none')
   const [output,setOutput] = React.useState('')
   
-  React.useEffect(() => {
-    async function fetch_quizs() {
-      const files =  await FileSystem.ls(Dirs.DocumentDir);
-      if(files.length > 0){
-              setOutput({statue: 'good', filesArray: files});
-          setIsLoading(false)
+   React.useEffect(() => {
+    async function fetch_quiz(){
+          let quiz_array = []
+         let files = await readDir(RNFS.DownloadDirectoryPath);
+         for(let i =0;i<files.length;i++){
+          if(files[i].name.includes('json'){
+             quiz_array.push(files[i])
+             } 
+         }
+      if(quiz_array.length > 0){
+        setOutput(quiz_array)
+        setIsLoading(false)
+      }else {
+         setOutput({statue:'sad', tryAgain:true})
+         setIsLoading(false)
       }
- setOutput({statue: 'bad', filesArray: 'empty'});
     }
-
- fetch_quizs()
-   
-
-
-  }, []) 
+   fetch_quiz()
+   },[])
   
   
   
