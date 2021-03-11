@@ -5,26 +5,27 @@ import RNFS from 'react-native-fs'
 function MyComponent(){
   const [isloading, setIsLoading] = React.useState(true)
   const [errorMessage, setErrorMessage] = React.useState('error message: none')
-  const [output,setOutput] = React.useState('')
-  
-React.useEffect(() => {
+ const [data, setData] = React.useState({stat:'none', trying:true})
+
+  React.useEffect(() => {
+
     async function fetch_quiz() {
-      let quiz_array = []
-      let files = await readDir(RNFS.DownloadDirectoryPath);
-      for (let i = 0; i < files.length; i++) {
-        if (files[i].name.includes('json')) {
-          quiz_array.push(files[i])
-        }
-      }
-      if (quiz_array.length > 0) {
-        setOutput(quiz_array)
-        setIsLoading(false)
-      } else {
-        setOutput({ statue: 'sad', tryAgain: true })
-        setIsLoading(false)
+      try {
+        return files = await readDir(RNFS.DownloadDirectoryPath);
+      } catch (error) {
+        setErrorMessage(JSON.stringify(error))
       }
     }
-    fetch_quiz()
+
+
+
+    if(fetch_quiz().length > 0){
+      setData(fetch_quiz());
+      setIsLoading(false)
+    }else{
+      setData({stat:'failed array is empty?', feeling: 'sad'});
+      setIsLoading(false)
+    }
   }, [])
   
   
@@ -33,8 +34,9 @@ React.useEffect(() => {
   if (isloading) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>جاري التحميل ثوان من فضلك</Text>
+        <Text>جاري التحميل ثوان من فضلك v38</Text>
       <Text>{errorMessage}</Text>
+      <Text>{JSON.stringify(data, null, 2)}</Text>
       </View>
     )
   }
@@ -42,10 +44,10 @@ React.useEffect(() => {
    if (!isloading) {
     return (
       <View style={{ flex: 1, alignItems: 'center' }}>
-        <Text>النتيجة:</Text>
+        <Text>النتيجة: v38</Text>
         <Text>{errorMessage}</Text>
       <Text>---------------</Text>
-      <Text>{JSON.stringify(output, null, 2)}</Text>
+      <Text>{JSON.stringify(data, null, 2)}</Text>
       </View>
     )
   }
@@ -62,7 +64,4 @@ React.useEffect(() => {
 
 export default MyComponent
 
-const styles = StyleSheet.create({
-
-});
 
