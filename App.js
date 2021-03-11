@@ -7,30 +7,25 @@ function MyComponent(){
   const [errorMessage, setErrorMessage] = React.useState('error message: none')
   const [output,setOutput] = React.useState('')
   
-   React.useEffect(() => {
-    async function fetch_quiz(){
-         let quiz_array = []
-         let files = await readDir(RNFS.DownloadDirectoryPath);
-         for(let i =0;i<files.length;i++){
-
-          if(files[i].isFile() && file.name.indexOf('.json') >= 0)){
-
-             quiz_array.push(files[i])
-
-             } 
-
-         }
-
-      if(quiz_array.length > 0){
+React.useEffect(() => {
+    async function fetch_quiz() {
+      let quiz_array = []
+      let files = await readDir(RNFS.DownloadDirectoryPath);
+      for (let i = 0; i < files.length; i++) {
+        if (files[i].name.includes('json')) {
+          quiz_array.push(files[i])
+        }
+      }
+      if (quiz_array.length > 0) {
         setOutput(quiz_array)
         setIsLoading(false)
       } else {
-         setOutput({statue:'sad', tryAgain:true})
-         setIsLoading(false)
+        setOutput({ statue: 'sad', tryAgain: true })
+        setIsLoading(false)
       }
     }
-   fetch_quiz()
-   },[])
+    fetch_quiz()
+  }, [])
   
   
   
