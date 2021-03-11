@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-fs": "2.16.6",
+    "react-native-fs": "2.16.0",
     "@expo-google-fonts/cairo": "^0.1.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.9.2",
