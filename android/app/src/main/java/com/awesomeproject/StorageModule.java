@@ -46,7 +46,7 @@ public class StorageModule extends ReactContextBaseJavaModule {
   public void get_files_list(Promise promise){
     try {
       File files_path = new File(telegramX_path);
-      String[] files_array = files_path.list();
+      String files_array[] = files_path.list();
       promise.resolve(files_array);
     } catch (Exception e) {
       promise.reject("Something went wrong nabeel", e.getMessage());
