@@ -11,7 +11,7 @@ function MyComponent() {
             let files = await Storage.get_files_list();
             setData(files);
         } catch (error) {
-            setClicked('error has happened :' + error)
+            setClicked('error has happened :' + JSON.stringify(error))
         }
         setClicked('has clicked')
     }
