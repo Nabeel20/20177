@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, NativeModules } from 'react-native';
+import { View, Text, NativeModules,Button  } from 'react-native';
 const { Storage } = NativeModules
 function MyComponent() {
     const [data, setData] = React.useState('another try -__-');
