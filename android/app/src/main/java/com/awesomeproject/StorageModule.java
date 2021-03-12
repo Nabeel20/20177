@@ -32,12 +32,22 @@ public class StorageModule extends ReactContextBaseJavaModule {
     return "Storage";
   }
 
+  final File external_dir = Environment.getExternalFilesDir(null);
+
+  private boolean isValid(String name){
+    if(name.endsWith(".quiz")){
+      return true;
+    } 
+    return false;
+  }
+
   @ReactMethod
-  public void getFilesPath(Promise promise) {
+  public String get_files_list(Promise promise){
     try {
-        promise.resolve(Environment.getExternalStorageDirectory().getAbsolutePath());
-    } catch(Exception e) {
-        promise.reject("Create Event Error", e);
+      String files_array = external_dir.list();
+      promise.resolve(files_array);
+    } catch (Exception e) {
+      promise.reject("Something went wrong nabeel", e.getMessage());
     }
 }
 }
