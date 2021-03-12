@@ -31,7 +31,7 @@ public class StorageModule extends ReactContextBaseJavaModule {
     // name of module should be the same as IOS
     return "Storage";
   }
-
+//File type == path 
   final File external_dir = Environment.getExternalFilesDir(null);
 
   private boolean isValid(String name){
@@ -50,4 +50,6 @@ public class StorageModule extends ReactContextBaseJavaModule {
       promise.reject("Something went wrong nabeel", e.getMessage());
     }
 }
+
+
 }
