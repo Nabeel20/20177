@@ -1,4 +1,4 @@
-package com.balsamexpo;
+package com.awesomeproject;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
