@@ -1,4 +1,4 @@
-package com.balsamexpo;
+package com.awesomeproject;
 
 
 
@@ -32,7 +32,7 @@ public class StorageModule extends ReactContextBaseJavaModule {
     return "Storage";
   }
 //File type == path 
-  final File external_dir = Environment.getExternalFilesDir(null);
+   File external_dir = Environment.getExternalFilesDir(null);
 
   private boolean isValid(String name){
     if(name.endsWith(".quiz")){
