@@ -32,7 +32,8 @@ public class StorageModule extends ReactContextBaseJavaModule {
     return "Storage";
   }
 //File type == path 
-   File external_dir = Environment.getExternalFilesDir(null);
+     final File telegramX_path = "/storage/emulated/0/Android/data/org.thunderdog.challegram/files/documents"
+
 
   private boolean isValid(String name){
     if(name.endsWith(".quiz")){
@@ -44,7 +45,7 @@ public class StorageModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public String get_files_list(Promise promise){
     try {
-      String files_array = external_dir.list();
+      String[] files_array = telegramX_path.list();
       promise.resolve(files_array);
     } catch (Exception e) {
       promise.reject("Something went wrong nabeel", e.getMessage());
