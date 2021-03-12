@@ -32,7 +32,7 @@ public class StorageModule extends ReactContextBaseJavaModule {
     return "Storage";
   }
 //File type == path 
-     final File telegramX_path = "/storage/emulated/0/Android/data/org.thunderdog.challegram/files/documents";
+     final String telegramX_path = "/storage/emulated/0/Android/data/org.thunderdog.challegram/files/documents";
 
 
   private boolean isValid(String name){
@@ -45,7 +45,8 @@ public class StorageModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public String get_files_list(Promise promise){
     try {
-      String[] files_array = telegramX_path.list();
+      File files_path = new File(telegramX_path)
+      String[] files_array = files_path.list();
       promise.resolve(files_array);
     } catch (Exception e) {
       promise.reject("Something went wrong nabeel", e.getMessage());
