@@ -32,7 +32,7 @@ public class StorageModule extends ReactContextBaseJavaModule {
     return "Storage";
   }
 //File type == path 
-     final File telegramX_path = "/storage/emulated/0/Android/data/org.thunderdog.challegram/files/documents"
+     final File telegramX_path = "/storage/emulated/0/Android/data/org.thunderdog.challegram/files/documents";
 
 
   private boolean isValid(String name){
