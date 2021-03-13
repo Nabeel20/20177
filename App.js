@@ -28,7 +28,7 @@ function MyComponent() {
             } 
         })
     }
-    function get_async_path(){
+   async function get_async_path(){
         let path = await Storage.get_path();
         if(path != null || undefined){
             setPath(`path is: ${JSON.stringify(path)}`)
