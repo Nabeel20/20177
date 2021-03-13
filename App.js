@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import { View, Text, NativeModules, FileList } from 'react-native';
+import { View, Text, NativeModules, FlatList } from 'react-native';
 import { FileSystem } from 'react-native-file-access';
 const { Storage } = NativeModules;
 function MyComponent() {
@@ -32,7 +32,7 @@ function MyComponent() {
 
     return (
         <View style={{ flex: 1, padding: 10 }}>
-            <FileList
+            <FlatList
                 data={data}
                 renderItem={({ item }) => {
                     return (
