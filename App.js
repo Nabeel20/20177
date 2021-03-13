@@ -22,29 +22,31 @@ function MyComponent() {
         setLoading(false);
     }, [])
 
-   
-
-    return (
-           {loading ?
-           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      if (loading) {
+        return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>جاري التحميل ¯\_( ͡° ͜ʖ ͡°)_/¯</Text>
             </View>
-           :
-        <View style={{ flex: 1, padding: 10 }}>
-            <FlatList
-                data={data}
-                renderItem={({ item }) => {
-                    return (
-                        <View>
-                            <Text>Title: {item.title}</Text>
-                            <Text>Path: {item.path}</Text>
-                            <Text>ــــــــــــــــــــツـــــــــــــــــ</Text>
-                        </View>
-                    )
-                }}
-            />
-        </View> }
-    )
+        )
+    } else {
+        return (
+            <View style={{ flex: 1, padding: 10 }}>
+                <FlatList
+                    data={data}
+                    renderItem={({ item }) => {
+                        return (
+                            <View>
+                                <Text>Title: {item.title}</Text>
+                                <Text>Path: {item.path}</Text>
+                                <Text>ــــــــــــــــــــツـــــــــــــــــ</Text>
+                            </View>
+                        )
+                    }}
+                />
+            </View>
+        )
+    } 
+
 }
 
 export default MyComponent
