@@ -52,6 +52,13 @@ public class StorageModule extends ReactContextBaseJavaModule {
       promise.reject("Something went wrong nabeel", e.getMessage());
     }
 }
-
+@ReactMethod
+  public void get_path(Promise promise){
+    try{
+      promise.resolve(telegramX_path);
+    } catch(Exception e){
+      promise.reject("Something Wrong", "Could not know it",e);
+    }
+  }
 
 }
