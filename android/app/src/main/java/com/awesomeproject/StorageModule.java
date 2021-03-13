@@ -36,7 +36,7 @@ public class StorageModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void get_files_list(Promise promise){
     try {
-      String output = '@Java empty output';
+      String output = "@Java empty output";
       File files_path = new File(telegramX_path);
       String[] files_array = files_path.list();
       if(files_array != null){
