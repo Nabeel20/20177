@@ -35,21 +35,19 @@ public class StorageModule extends ReactContextBaseJavaModule {
   final String telegramX_path = "/storage/emulated/0/Android/data/org.thunderdog.challegram/files/documents";
   @ReactMethod
   public void get_files_list(Promise promise){
-    try {
+      try {
       String output = "@Java empty output";
       File files_path = new File(telegramX_path);
       String[] files_array = files_path.list();
       if(files_array != null){
       if(files_array.length > 0){
-        output = files_array;
+              promise.resolve(files_array);
       } else {
         output = "Files_array not working at all";
       }
-      } else {
-      output = "Files_array == null";
       }
       promise.resolve(output);
-    } catch (IOException e) {
+    } catch (Exception e) {
       promise.reject("Something went wrong: ","what is happening: ", e);
     }
 }
