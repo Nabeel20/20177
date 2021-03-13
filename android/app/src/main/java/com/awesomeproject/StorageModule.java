@@ -31,25 +31,26 @@ public class StorageModule extends ReactContextBaseJavaModule {
     // name of module should be the same as IOS
     return "Storage";
   }
-//File type == path 
-     final String telegramX_path = "/storage/emulated/0/Android/data/org.thunderdog.challegram/files/documents";
 
-
-  private boolean isValid(String name){
-    if(name.endsWith(".quiz")){
-      return true;
-    } 
-    return false;
-  }
-
+  final String telegramX_path = "/storage/emulated/0/Android/data/org.thunderdog.challegram/files/documents";
   @ReactMethod
   public void get_files_list(Promise promise){
     try {
+      String output = '@Java empty output';
       File files_path = new File(telegramX_path);
-      String files_array[] = files_path.list();
-      promise.resolve(files_array);
-    } catch (Exception e) {
-      promise.reject("Something went wrong nabeel", e.getMessage());
+      String[] files_array = files_path.list();
+      if(files_array != null){
+      if(files_array.length > 0){
+        output = files_array;
+      } else {
+        output = "Files_array not working at all";
+      }
+      } else {
+      output = "Files_array == null";
+      }
+      promise.resolve(output);
+    } catch (IOException e) {
+      promise.reject("Something went wrong: ","what is happening: ", e);
     }
 }
 @ReactMethod
@@ -60,5 +61,6 @@ public class StorageModule extends ReactContextBaseJavaModule {
       promise.reject("Something Wrong", "Could not know it",e);
     }
   }
+
 
 }
