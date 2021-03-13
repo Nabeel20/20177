@@ -49,8 +49,8 @@ public class StorageModule extends ReactContextBaseJavaModule {
       File[] files_array = files.listFiles(filter);
       ArrayList < String > files_output = new ArrayList < String > ();
       for (File file: files_array) {
-        String path = file.getAbsolutePath();
-        files_output.add(path);
+        String file_path = file.getAbsolutePath();
+        files_output.add(file_path);
       }
 
       promise.resolve(files_output);
