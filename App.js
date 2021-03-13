@@ -24,13 +24,17 @@ function MyComponent() {
 
     if (loading) {
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>جاري التحميل ¯\_( ͡° ͜ʖ ͡°)_/¯</Text>
-            </View>
+            
         )
     }
 
     return (
+{visible?
+           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>جاري التحميل ¯\_( ͡° ͜ʖ ͡°)_/¯</Text>
+            </View>
+
+:
         <View style={{ flex: 1, padding: 10 }}>
             <FlatList
                 data={data}
@@ -44,7 +48,7 @@ function MyComponent() {
                     )
                 }}
             />
-        </View>
+        </View> }
     )
 }
 
