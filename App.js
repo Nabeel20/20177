@@ -25,11 +25,10 @@ function MyComponent() {
    
 
     return (
-           {visible?
+           {loading ?
            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>جاري التحميل ¯\_( ͡° ͜ʖ ͡°)_/¯</Text>
             </View>
-
            :
         <View style={{ flex: 1, padding: 10 }}>
             <FlatList
