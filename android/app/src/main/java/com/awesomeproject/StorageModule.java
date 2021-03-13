@@ -20,45 +20,43 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.UUID;
 
+import java.util.*;
+import java.io.*;
 
 public class StorageModule extends ReactContextBaseJavaModule {
-   StorageModule(ReactApplicationContext context) {
-       super(context);
-   }
+  StorageModule(ReactApplicationContext context) {
+    super(context);
+  }
 
   @Override
   public String getName() {
-    // name of module should be the same as IOS
     return "Storage";
   }
 
-  final String telegramX_path = "/storage/emulated/0/Android/data/org.thunderdog.challegram/files/documents";
   @ReactMethod
-  public void get_files_list(Promise promise){
-      try {
-      String output = "@Java empty output";
-      File files_path = new File(telegramX_path);
-      String[] files_array = files_path.list();
-      if(files_array != null){
-      if(files_array.length > 0){
-              promise.resolve(files_array);
-      } else {
-        output = "Files_array not working at all";
+  public void get_files_paths(Promise promise) {
+    try {
+      String path = "/storage/emulated/0/Download";
+      File files = new File(path);
+
+      FilenameFilter filter = new FilenameFilter() {
+        @Override
+        public boolean accept(File f, String name) {
+          return name.endsWith(".quiz");
+        }
+      };
+
+      File[] files_array = files.listFiles(filter);
+      ArrayList < String > files_output = new ArrayList < String > ();
+      for (File file: files_array) {
+        String path = file.getAbsolutePath();
+        files_output.add(path);
       }
-      }
-      promise.resolve(output);
+
+      promise.resolve(files_output);
     } catch (Exception e) {
-      promise.reject("Something went wrong: ","what is happening: ", e);
-    }
-}
-@ReactMethod
-  public void get_path(Promise promise){
-    try{
-      promise.resolve(telegramX_path);
-    } catch(Exception e){
-      promise.reject("Something Wrong", "Could not know it",e);
+      promise.reject("Something went wrong: ", "what is happening: ", e);
     }
   }
-
-
 }
+
