@@ -1,6 +1,4 @@
-package com.awesomeproject;
-
-
+package com.balsamexpo;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,13 +10,7 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.UUID;
+import com.facebook.recat.bridge.WritableArray;
 
 import java.util.*;
 import java.io.*;
@@ -47,16 +39,22 @@ public class StorageModule extends ReactContextBaseJavaModule {
       };
 
       File[] files_array = files.listFiles(filter);
-      ArrayList < String > files_output = new ArrayList < String > ();
+      ArrayList < String > files_arrayList = new ArrayList < String > ();
       for (File file: files_array) {
         String file_path = file.getAbsolutePath();
         files_output.add(file_path);
       }
 
-      promise.resolve(files_output);
+      String[] return_array = new String[files_arrayList.size()];
+      return_array = files_arrayList.toArray(return_array);
+
+      WritableArray promise_array = Arguments.createArray();
+      for (int i = 0; i < return_array.length; i++) {
+        promise_array.pushString(return_array[i]);
+      }
+      promise.resolve(promise_array);
     } catch (Exception e) {
-      promise.reject("Something went wrong: ", "what is happening: ", e);
+      promise.reject("Something went wrong: ", e);
     }
   }
 }
-
