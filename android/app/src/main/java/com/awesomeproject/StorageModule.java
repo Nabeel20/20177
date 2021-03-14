@@ -42,7 +42,7 @@ public class StorageModule extends ReactContextBaseJavaModule {
       ArrayList < String > files_arrayList = new ArrayList < String > ();
       for (File file: files_array) {
         String file_path = file.getAbsolutePath();
-        files_output.add(file_path);
+        files_arrayList.add(file_path);
       }
 
       String[] return_array = new String[files_arrayList.size()];
