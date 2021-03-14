@@ -57,7 +57,7 @@ function MyComponent() {
                 <Text style={{ color: 'red' }}>error message: {errorMsg}</Text>
                 <Text>paths: {paths_output}</Text>
                 <Text>files: {files_output}</Text>
-                <Text>data JSON.stringify => :{JSON.stringify(data, null, 2)}</Text>
+                <Text>data JSON.stringify:{JSON.stringify(data, null, 2)}</Text>
                 {data.length > 0 ?
                     <FlatList
                         data={data}
